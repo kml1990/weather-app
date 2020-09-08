@@ -1,0 +1,8 @@
+@import './constants.scss';
+
+.App {
+    @extend %flexCenter;
+    height: 100%;
+    width: 100%;
+    color: $textColor;
+}

@@ -1,0 +1,10 @@
+@import '../../../constants.scss';
+
+.ForecastReloadProgress {
+    margin-top: $mediumMargin;
+}
+
+.ForecastReloadProgress__text,
+.ForecastReloadProgress__bar {
+    display: block,
+}

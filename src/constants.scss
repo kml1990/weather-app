@@ -1,0 +1,84 @@
+// ======================================================================
+// Responsive
+// ======================================================================
+
+$tabletAndDesktopBreakpointWidth: 768px;
+
+@mixin desktop {
+    @media (min-width: #{$tabletAndDesktopBreakpointWidth}) {
+        @content;
+    }
+}
+
+// ======================================================================
+// Colors
+// ======================================================================
+
+$white:                             #ffffff;
+$black:                             #000000;
+$lightGrey:                         #ebecee;
+$grey:                              #5c5d61;
+$mediumGrey:                        #32353e;
+$darkGrey:                          #101012;
+$mediumPurple:                      #757f9a;
+$lightPurple:                       #d7dde8;
+$orange:                            #f49c08;
+
+$bodyBg:                            linear-gradient(120deg, $mediumPurple, $lightPurple);
+$contentBg:                         $darkGrey;
+$headerBg:                          $mediumGrey;
+$forecastListItemBg:                $grey;
+$progressBg:                        $orange;
+
+$textColor:                         $lightGrey;
+
+$progressBorderColor:               $darkGrey;
+$timerBorderColor:                  $darkGrey;
+
+// ======================================================================
+// Spacing
+// ======================================================================
+
+$smallPadding:                      0.5rem;
+$mediumPadding:                     1rem;
+$largePadding:                      2rem;
+
+$smallMargin:                       0.5rem;
+$mediumMargin:                      1rem;
+$largeMargin:                       2rem;
+
+// ======================================================================
+// Sizing
+// ======================================================================
+
+$bodyHeight:                        100vh;
+
+// ======================================================================
+// Layout
+// ======================================================================
+
+%flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// ======================================================================
+// Misc
+// ======================================================================
+
+$borderRadius: 0.5rem;
+
+// ======================================================================
+// Components
+// ======================================================================
+
+// Card
+$cardHeight: 30rem;
+$cardWidth: 20rem;
+
+// Header
+$headerHeight: $cardHeight / 6;
+
+// Contemt
+$contentHeight: $cardHeight - $headerHeight;

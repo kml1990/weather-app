@@ -1,0 +1,17 @@
+@import '../../../constants.scss';
+
+$shadowColor: rgba(0,0,0,.3);
+$shadowSize: 0 1.5rem 3rem 0;
+
+.Card {
+    height: 100%;
+    width: 100%;
+    background: $darkGrey;
+    border-radius: $borderRadius;
+    box-shadow: $shadowSize $shadowColor, $shadowSize $shadowColor;
+
+    @include desktop {
+        height: $cardHeight;
+        width: $cardWidth;
+    }
+}
