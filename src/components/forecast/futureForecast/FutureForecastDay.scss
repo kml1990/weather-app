@@ -1,0 +1,13 @@
+@import '../../../constants.scss';
+
+$borderRadius: $borderRadius / 3;
+
+.FutureForecastDay {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    background: $grey;
+    margin-bottom: $smallMargin;
+    border-radius: $borderRadius;
+    padding: $mediumPadding;
+}
