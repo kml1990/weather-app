@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FutureForecastDay from './FutureForecastDay';
 
 import './FutureForecast.scss';
-
-export interface ForecastDay { // TODO move 
-    day: string; // TODO change
-    temperature: number;
-    condition: string;
-}
+import useInjection from '../../../di/DependencyHook';
+import ForecastService from '../../../forecast/ForecastService';
+import DependencyType from '../../../di/DependencyType';
 
 const FutureForecast: React.FC = () => {
-    const forecastForNextFiveDays: ForecastDay[] = [
+    const forecastService = useInjection<ForecastService>(DependencyType.ForecastService);
+    const forecastForNextFiveDays = [
         {
             day: 'MON',
             temperature: 12,
@@ -38,7 +36,12 @@ const FutureForecast: React.FC = () => {
         },
     ];
 
-    const futureForecastDays = forecastForNextFiveDays.map((forecast: ForecastDay) => (
+    useEffect(() => {
+        const dailyForecast = forecastService.forecast;
+        console.log(dailyForecast)
+    }, []);
+
+    const futureForecastDays = forecastForNextFiveDays.map(forecast => (
         <FutureForecastDay key={forecast.day} forecast={forecast} />
     ));
 

@@ -1,10 +1,9 @@
 import React from 'react';
-import { ForecastDay } from './FutureForecast';
 
 import './FutureForecastDay.scss'
 
 export interface FutureForecastDayProps {
-    forecast: ForecastDay;
+    forecast: any;
 }
 
 const FutureForecastDay: React.FC<FutureForecastDayProps> = ({ forecast }) => {

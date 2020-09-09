@@ -7,7 +7,7 @@ export interface TemperatureProps {
 const Temperature: React.FC<TemperatureProps> = ({ temperature }) => {
     return (
         <span className="Temperature">
-           {temperature}
+           {temperature} &#8451;
         </span>
     );
 };
