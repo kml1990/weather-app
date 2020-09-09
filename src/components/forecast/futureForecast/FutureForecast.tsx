@@ -39,8 +39,8 @@ const FutureForecast: React.FC = () => {
     ];
 
     const futureForecastDays = forecastForNextFiveDays.map((forecast: ForecastDay) => (
-        <FutureForecastDay forecast={forecast} />
-    ))
+        <FutureForecastDay key={forecast.day} forecast={forecast} />
+    ));
 
     return (
         <ul className="FutureForecast">

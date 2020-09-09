@@ -41,6 +41,7 @@
     "indent": ["error", 4, { "SwitchCase": 1 }],
     "max-len": ["error", { "code": 120 }],
     "react/destructuring-assignment": ["warn"],
+    "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": [
