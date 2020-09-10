@@ -1,36 +1,34 @@
-import { injectable } from 'inversify';
-import moment from 'moment';
-import DailyForecast from '../types/dailyForecast/DailyForecast';
+import { inject, injectable } from 'inversify';
+import DailyForecastFactory from '../dailyForecast/DailyForecastFactory';
+import DependencyType from '../di/DependencyType';
+import LocationFactory from '../location/LocationFactory';
 import Forecast from '../types/forecast/Forecast';
-import { DailyForecastDto, ForecastDto } from '../types/ForecastDto';
-import Location from '../types/location/Location';
+import { ForecastDto } from '../types/ForecastDto';
 
 @injectable()
 export default class ForecastFactory {
+    private readonly locationFactory: LocationFactory;
+
+    private readonly dailyForecastFactory: DailyForecastFactory;
+
+    constructor(
+        @inject(DependencyType.LocationFactory) locationFactory: LocationFactory,
+        @inject(DependencyType.DailyForecastFactory) dailyForecastFactory: DailyForecastFactory,
+    ) {
+        this.locationFactory = locationFactory;
+        this.dailyForecastFactory = dailyForecastFactory;
+    }
+
     create(forecastDto: ForecastDto): Forecast {
         const {
             current: { temp },
-            daily,
-            lat,
-            lon,
         } = forecastDto;
 
         const currentTemperature = Math.floor(temp);
-        // TODO move to its own factory
-        const dailyForecast = daily.map((dailyForecastDto: DailyForecastDto) => {
-            const {
-                dt: epoch,
-                temp: { day: dayTemperature },
-                weather: [{ description: condition, icon }],
-            } = dailyForecastDto;
-            const day = moment.unix(epoch).format('ddd');
-            const temperature = Math.floor(dayTemperature);
-            return new DailyForecast({ day, temperature, condition, icon });
-        });
 
-        // TODO move to its own factory
-        const location = new Location({ lat, lon });
+        const dailyForecasts = this.dailyForecastFactory.create(forecastDto);
+        const location = this.locationFactory.create(forecastDto);
 
-        return new Forecast({ currentTemperature, dailyForecast, location })
+        return new Forecast({ currentTemperature, dailyForecasts, location });
     }
 }

@@ -2,34 +2,33 @@ import React, { useEffect, useState } from 'react';
 import Temperature from '../../common/temperature/Temperature';
 import Location from '../../location/Location';
 import CurrentTime from '../../currentTime/CurrentTime';
-import DependencyType from '../../../di/DependencyType';
-import useInjection from '../../../di/DependencyHook';
-import ForecastService from '../../../forecast/ForecastService';
-
-import './CurrentForecast.scss';
 import Forecast from '../../../types/forecast/Forecast';
 
+import './CurrentForecast.scss';
+
+// TODO move this to forecast object
 export const DEFAULT_LOCATION = 'London';
 
-const CurrentForecast: React.FC = () => {
-    const forecastService = useInjection<ForecastService>(DependencyType.ForecastService);
-    const [forecast, setForecast] = useState<Forecast | null>();
+export interface CurrentForecastProps {
+    forecast: Forecast | null;
+}
+
+const CurrentForecast: React.FC<CurrentForecastProps> = ({ forecast }) => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        // TODO move to app
-        console.log(forecastService.forecast)
-        setForecast(forecastService.forecast);
-    }, [forecastService]);
+        setIsLoading(forecast === null);
+    }, [forecast]);
 
-    if (!forecast) {
-        return null;
-    }
+    console.log(isLoading)
+
+    const temperature = (forecast && forecast.currentTemperature) || 0;
 
     return (
         <section className="CurrentForecast">
             <Location className="CurrentForecast__location" location={DEFAULT_LOCATION} />
             <CurrentTime />
-            <Temperature temperature={forecast.currentTemperature} />
+            <Temperature temperature={temperature} />
         </section>
     );
 };

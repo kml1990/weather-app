@@ -10,4 +10,7 @@ $borderRadius: $borderRadius / 3;
     margin-bottom: $smallMargin;
     border-radius: $borderRadius;
     padding: $mediumPadding;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }

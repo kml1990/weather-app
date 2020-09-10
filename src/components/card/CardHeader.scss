@@ -1,10 +1,9 @@
-@import '../../../constants.scss';
+@import '../../constants.scss';
 
-.Header {
-    height: $headerHeight;
+.CardHeader {
+    height: 20%;
     padding: $smallPadding;
     background: $headerBg;
-    overflow: hidden;
     border-top-left-radius: $borderRadius;
     border-top-right-radius: $borderRadius;
 }

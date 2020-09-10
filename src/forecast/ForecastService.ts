@@ -31,7 +31,7 @@ export default class ForecastService {
         return this._forecast;
     }
 
-    loadForecast(): Promise<Forecast | null> {
+    getForecast(): Promise<Forecast | null> {
         const { currentLocation } = this.locationService;
         return this.forecastApi
             .fetchForecast(currentLocation)

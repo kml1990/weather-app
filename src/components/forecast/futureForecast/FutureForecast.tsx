@@ -1,48 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import FutureForecastDay from './FutureForecastDay';
 
 import './FutureForecast.scss';
-import useInjection from '../../../di/DependencyHook';
-import ForecastService from '../../../forecast/ForecastService';
-import DependencyType from '../../../di/DependencyType';
+import DailyForecast from '../../../types/dailyForecast/DailyForecast';
 
-const FutureForecast: React.FC = () => {
-    const forecastService = useInjection<ForecastService>(DependencyType.ForecastService);
-    const forecastForNextFiveDays = [
-        {
-            day: 'MON',
-            temperature: 12,
-            condition: 'Sunny intervals',
-        },
-        {
-            day: 'TUE',
-            temperature: 10,
-            condition: 'Sunny intervals',
-        },
-        {
-            day: 'WED',
-            temperature: 2,
-            condition: 'Sunny intervals',
-        },
-        {
-            day: 'THU',
-            temperature: 22,
-            condition: 'Sunny intervals',
-        },
-        {
-            day: 'FRI',
-            temperature: 11,
-            condition: 'Sunny intervals',
-        },
-    ];
+export interface FutureForecastProps {
+    dailyForecasts: DailyForecast[];
+}
 
-    useEffect(() => {
-        const dailyForecast = forecastService.forecast;
-        console.log(dailyForecast)
-    }, []);
+const FutureForecast: React.FC<FutureForecastProps> = ({ dailyForecasts }) => {
 
-    const futureForecastDays = forecastForNextFiveDays.map(forecast => (
-        <FutureForecastDay key={forecast.day} forecast={forecast} />
+    const futureForecastDays = dailyForecasts.map((dailyForecast, index) => (
+        <FutureForecastDay key={`${dailyForecast.day}-${index}`} forecast={dailyForecast} />
     ));
 
     return (

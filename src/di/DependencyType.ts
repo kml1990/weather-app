@@ -1,8 +1,10 @@
 const DependencyType = {
     ForecastService: Symbol.for('ForecastService'),
-    ForecastFactory: Symbol.for('ForecastFactory'),
     LocationService: Symbol.for('LocationService'),
     ForecastApi: Symbol.for('ForecastApi'),
+    ForecastFactory: Symbol.for('ForecastFactory'),
+    LocationFactory: Symbol.for('LocationFactory'),
+    DailyForecastFactory: Symbol.for('DailyForecastFactory'),
 };
 
 export default DependencyType;

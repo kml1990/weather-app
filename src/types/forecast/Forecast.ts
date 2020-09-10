@@ -3,22 +3,22 @@ import Location from '../location/Location';
 
 export interface ForecastParams {
     currentTemperature: number;
-    dailyForecast: DailyForecast[];
+    dailyForecasts: DailyForecast[];
     location: Location;
 }
 
 export default class Forecast {
     private readonly _currentTemperature: number;
 
-    private readonly _dailyForecast: DailyForecast[];
+    private readonly _dailyForecasts: DailyForecast[];
 
     private readonly _location: Location;
 
     constructor(forecast: ForecastParams) {
-        const { currentTemperature, dailyForecast, location } = forecast;
+        const { currentTemperature, dailyForecasts, location } = forecast;
 
         this._currentTemperature = currentTemperature;
-        this._dailyForecast = dailyForecast;
+        this._dailyForecasts = dailyForecasts;
         this._location = location;
     }
 
@@ -26,8 +26,8 @@ export default class Forecast {
         return this._currentTemperature;
     }
 
-    get dailyForecast(): DailyForecast[] {
-        return this._dailyForecast;
+    get dailyForecasts(): DailyForecast[] {
+        return this._dailyForecasts;
     }
 
     get location(): Location {
