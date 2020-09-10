@@ -1,6 +1,18 @@
 @import '../../../constants.scss';
 
 .CurrentForecast {
+    position: relative;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+
+.CurrentForecast__location {
+    text-transform: uppercase;
+    font-size: $mediumFontSize;
+}
+
+.CurrentForecast__temperature {
+    text-transform: uppercase;
+    font-size: $mediumFontSize;
 }

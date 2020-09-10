@@ -2,8 +2,8 @@ import { inject, injectable } from 'inversify';
 import ForecastApi from '../api/ForecastApi';
 import DependencyType from '../di/DependencyType';
 import LocationService from '../location/LocationService';
-import Forecast from '../types/forecast/Forecast';
-import { ForecastDto } from '../types/ForecastDto';
+import Forecast from './Forecast';
+import { ForecastDto } from './ForecastDto';
 import ForecastFactory from './ForecastFactory';
 
 @injectable()

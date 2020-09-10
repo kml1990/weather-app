@@ -2,9 +2,18 @@
 
 .ForecastReloadProgress {
     margin-top: $mediumMargin;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.ForecastReloadProgress__text {
+    font-size: $smallFontSize;
 }
 
 .ForecastReloadProgress__text,
 .ForecastReloadProgress__bar {
-    display: block,
+    display: block;
+    width: 100%;
 }

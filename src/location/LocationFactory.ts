@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
-import Location from '../types/location/Location';
-import { ForecastDto } from '../types/ForecastDto';
+import Location from './Location';
+import { ForecastDto } from '../forecast/ForecastDto';
 
 @injectable()
 export default class LocationFactory {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Temperature from '../../common/temperature/Temperature';
-import Location from '../../location/Location';
+import Location from '../../common/location/Location';
 import CurrentTime from '../../currentTime/CurrentTime';
-import Forecast from '../../../types/forecast/Forecast';
+import Forecast from '../../../forecast/Forecast';
 
 import './CurrentForecast.scss';
 
@@ -14,13 +14,12 @@ export interface CurrentForecastProps {
 }
 
 const CurrentForecast: React.FC<CurrentForecastProps> = ({ forecast }) => {
+    // TODO
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         setIsLoading(forecast === null);
     }, [forecast]);
-
-    console.log(isLoading)
 
     const temperature = (forecast && forecast.currentTemperature) || 0;
 
@@ -28,7 +27,7 @@ const CurrentForecast: React.FC<CurrentForecastProps> = ({ forecast }) => {
         <section className="CurrentForecast">
             <Location className="CurrentForecast__location" location={DEFAULT_LOCATION} />
             <CurrentTime />
-            <Temperature temperature={temperature} />
+            <Temperature className="CurrentForecast__temperature" temperature={temperature} />
         </section>
     );
 };

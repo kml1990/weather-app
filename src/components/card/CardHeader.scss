@@ -1,7 +1,9 @@
 @import '../../constants.scss';
 
 .CardHeader {
-    height: 20%;
+    height: 15%;
+    display: flex;
+    flex-wrap: wrap;
     padding: $smallPadding;
     background: $headerBg;
     border-top-left-radius: $borderRadius;

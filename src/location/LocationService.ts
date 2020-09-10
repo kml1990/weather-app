@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import Location from '../types/location/Location';
+import Location from './Location';
 
 export const DEFAULT_LOCATION = {
     lat: 51.51,

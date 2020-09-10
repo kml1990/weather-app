@@ -5,6 +5,7 @@ import ForecastFactory from '../forecast/ForecastFactory';
 import ForecastService from '../forecast/ForecastService';
 import LocationFactory from '../location/LocationFactory';
 import LocationService from '../location/LocationService';
+import DateUtil from '../utils/date/DateUtil';
 import DependencyType from './DependencyType';
 
 export const dependenciesContainer = new Container();
@@ -27,5 +28,8 @@ export const dependencies = new ContainerModule((bind: interfaces.Bind) => {
         .inSingletonScope();
     bind<DailyForecastFactory>(DependencyType.DailyForecastFactory)
         .to(DailyForecastFactory)
+        .inSingletonScope();
+    bind<DateUtil>(DependencyType.DateUtil)
+        .to(DateUtil)
         .inSingletonScope();
 });

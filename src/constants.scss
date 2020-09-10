@@ -19,7 +19,7 @@ $black:                             #000000;
 $lightGrey:                         #ebecee;
 $grey:                              #5c5d61;
 $mediumGrey:                        #32353e;
-$darkGrey:                          #101012;
+$darkGrey:                          #29292d;
 $mediumPurple:                      #757f9a;
 $lightPurple:                       #d7dde8;
 $orange:                            #f49c08;
@@ -39,6 +39,7 @@ $timerBorderColor:                  $darkGrey;
 // Spacing
 // ======================================================================
 
+$xSmallPadding:                     0.25rem;
 $smallPadding:                      0.5rem;
 $mediumPadding:                     1rem;
 $largePadding:                      2rem;
@@ -50,6 +51,11 @@ $largeMargin:                       2rem;
 // ======================================================================
 // Sizing
 // ======================================================================
+
+$defaultFontSize:                   14px;
+$smallFontSize:                     0.6rem;
+$mediumFontSize:                    1.15rem;
+$largeFontSize:                     1.5rem;
 
 $bodyHeight:                        100vh;
 
@@ -68,13 +74,14 @@ $bodyHeight:                        100vh;
 // ======================================================================
 
 $borderRadius: 0.5rem;
+$commonBorder: 0.15rem solid $progressBorderColor;
 
 // ======================================================================
 // Components
 // ======================================================================
 
 // Card
-$cardHeight: 30rem;
+$cardHeight: 35rem;
 $cardWidth: 20rem;
 
 // Header

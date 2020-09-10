@@ -1,0 +1,25 @@
+@import '../../constants.scss';
+
+$currentTimeWidht: 6.5rem;
+
+.CurrentTime {
+    @extend %flexCenter;
+    position: absolute;
+    width: $currentTimeWidht;
+    left: calc(50% - (#{$currentTimeWidht} / 2));
+    border: $commonBorder;
+    padding: $xSmallPadding;
+}
+
+.CurrentTime__text {
+    font-size: $smallFontSize;
+    &::before,
+    &::after {
+        display: inline-block;
+        content: "";
+        border-top: 0.1rem dashed $orange;
+        width: 0.75rem;
+        margin: 0 0.25rem;
+        transform: translateY(-0.15rem);
+    }
+}

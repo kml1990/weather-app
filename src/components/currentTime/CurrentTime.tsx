@@ -1,6 +1,8 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 
+import './CurrentTime.scss';
+
 export interface CurrentTimeProps {
     className?: string;
 }
@@ -11,12 +13,12 @@ const CurrentTime: React.FC<CurrentTimeProps> = ({ className = '' }) => {
     useEffect(() => {
         const time = moment.parseZone(moment().format()).format('HH:mm z');
         setCurrentTime(time);
-    }, []);
+    });
 
     return (
-        <span className={`CurrentTime ${className}`}>
-           {currentTime}
-        </span>
+        <div className={`CurrentTime ${className}`}>
+            <span className="CurrentTime__text">{currentTime}</span>
+        </div>
     );
 };
 

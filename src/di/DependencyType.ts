@@ -5,6 +5,7 @@ const DependencyType = {
     ForecastFactory: Symbol.for('ForecastFactory'),
     LocationFactory: Symbol.for('LocationFactory'),
     DailyForecastFactory: Symbol.for('DailyForecastFactory'),
+    DateUtil: Symbol.for('DateUtil'),
 };
 
 export default DependencyType;

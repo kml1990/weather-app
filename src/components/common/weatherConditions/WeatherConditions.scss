@@ -1,0 +1,21 @@
+@import '../../../constants.scss';
+
+$imageHeight: 2.5rem;
+
+.WeatherConditions {
+    @extend %flexCenter;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.WeatherConditions__image {
+    height: $imageHeight;
+    width: auto;
+}
+
+.WeatherConditions__text {
+    width: 100%;
+    text-transform: uppercase;
+    font-size: $smallFontSize;
+    text-align: right;
+}

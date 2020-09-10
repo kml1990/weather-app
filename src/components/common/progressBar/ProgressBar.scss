@@ -1,0 +1,26 @@
+@import '../../../constants.scss';
+
+$progressHeight: 0.75rem;
+
+.ProgressBar {
+    height: $progressHeight;
+    margin-top: $xSmallPadding;
+    border-radius: $borderRadius;
+    border: $commonBorder;
+}
+
+.ProgressBar__rail,
+.ProgressBar__bar {
+	display: block;
+	height: 100%;
+}
+
+.ProgressBar__rail {
+	width: 0;
+    transition: width 1s ease;
+}
+
+.ProgressBar__bar {
+    border-radius: $borderRadius;
+	background-color: $orange;
+}
