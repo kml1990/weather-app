@@ -2,8 +2,8 @@ const appConfig = {
     api: {
         API_KEY_PARAM: 'appid',
         API_KEY_VALUE: process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY,
-        BASE_URL: 'http://api.openweathermap.org/data/2.5/onecall',
-        IMAGE_BASE_URL: 'http://openweathermap.org/img/wn/',
+        BASE_URL: 'https://api.openweathermap.org/data/2.5/onecall',
+        IMAGE_BASE_URL: 'https://openweathermap.org/img/wn/',
     },
     timing: {
         ONE_SECOND_IN_MS: 1000,
