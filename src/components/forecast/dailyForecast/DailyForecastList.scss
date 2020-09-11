@@ -1,0 +1,27 @@
+$animationScale: scale(0.5);
+$animationTransition: opacity 0.5s, transform 0.5s;
+
+.DailyForecastList {
+    padding: 0;
+    margin: 0;
+}
+
+.DailyForecastList__item {
+    &-enter {
+        opacity: 0;
+        transform: $animationScale;
+    }
+    &-enter-active {
+        opacity: 1;
+        transform: translateX(0);
+        transition: $animationTransition;
+    }
+    &-exit {
+        opacity: 1;
+    }
+    &-exit-active {
+        opacity: 0;
+        transform: $animationScale;
+        transition: $animationTransition;
+      }
+}

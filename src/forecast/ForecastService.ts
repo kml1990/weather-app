@@ -3,7 +3,6 @@ import ForecastApi from '../api/ForecastApi';
 import DependencyType from '../di/DependencyType';
 import Location from '../location/Location';
 import LocationService from '../location/LocationService';
-import appConfig from '../utils/settings/Config';
 import Forecast, { DEFAULT_FORECAST_CONFIG } from './Forecast';
 import { ForecastDto } from './ForecastDto';
 import ForecastFactory from './ForecastFactory';
@@ -27,10 +26,6 @@ export default class ForecastService {
         this.locationService = locationService;
         this.forecastApi = forecastApi;
         this._forecast = new Forecast(DEFAULT_FORECAST_CONFIG);
-    }
-
-    get forecast() {
-        return this._forecast;
     }
 
     getForecast(): Promise<Forecast> {

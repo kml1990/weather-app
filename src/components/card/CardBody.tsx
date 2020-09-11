@@ -2,12 +2,8 @@ import React from 'react';
 
 import './CardBody.scss';
 
-export interface CardBodyProps {
-    className?: string;
-}
-
-const CardBody: React.FC<CardBodyProps> = ({ className = '', children }) => {
-    return <main className={`CardBody ${className}`}>{children}</main>;
-};
+const CardBody: React.FC = React.memo(({ children }) => {
+    return <main className="CardBody">{children}</main>;
+});
 
 export default CardBody;

@@ -10,11 +10,12 @@ export interface WeatherConditionsProps {
 }
 
 const WeatherConditions: React.FC<WeatherConditionsProps> = ({ condition, icon, className = '' }) => {
+    const imageSource = `${appConfig.api.IMAGE_BASE_URL}${icon}${appConfig.misc.ICON_EXT}`;
     return (
         <div className={`WeatherConditions ${className}`}>
             <img
                 className="WeatherConditions__image"
-                src={`http://openweathermap.org/img/wn/${icon}.png`}
+                src={imageSource}
                 alt={appConfig.texts.CONDITION_IMAGE_ALT_TEXT}
             />
             <span className="WeatherConditions__text">{condition}</span>

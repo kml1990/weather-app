@@ -3,11 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import './CurrentTime.scss';
 
-export interface CurrentTimeProps {
-    className?: string;
-}
-
-const CurrentTime: React.FC<CurrentTimeProps> = ({ className = '' }) => {
+const CurrentTime: React.FC = () => {
     const [currentTime, setCurrentTime] = useState<string>();
 
     useEffect(() => {
@@ -16,7 +12,7 @@ const CurrentTime: React.FC<CurrentTimeProps> = ({ className = '' }) => {
     });
 
     return (
-        <div className={`CurrentTime ${className}`}>
+        <div className="CurrentTime">
             <span className="CurrentTime__text">{currentTime}</span>
         </div>
     );

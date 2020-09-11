@@ -1,0 +1,29 @@
+@import '../../../constants.scss';
+
+$borderRadius: $borderRadius / 3;
+
+.DailyForecastItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    background: $grey;
+    margin-bottom: $smallMargin;
+    border-radius: $borderRadius;
+    padding: $smallPadding $mediumPadding;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.DailyForecastItem__day {
+    text-transform: uppercase;
+    font-size: $mediumFontSize;
+}
+
+.DailyForecastItem__temperature {
+    position: absolute;
+    left: 25%;
+    font-size: $largeFontSize;
+}

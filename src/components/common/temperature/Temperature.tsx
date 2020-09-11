@@ -18,6 +18,10 @@ const Temperature: React.FC<TemperatureProps> = ({ temperature, className = '' }
         return () => clearTimeout(timeout);
     });
 
+    useEffect(() => {
+        setTemperatureCounter(0);
+    }, [temperature]);
+
     const temperatureText = `${temperatureCounter} ${appConfig.temperature.CELCIUS_SYMBOL}`;
 
     return <span className={`Temperature ${className}`}>{temperatureText}</span>;

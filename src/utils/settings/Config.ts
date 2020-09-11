@@ -3,6 +3,7 @@ const appConfig = {
         API_KEY_PARAM: 'appid',
         API_KEY_VALUE: '4b759b7f086ae2b5e17ed220a9b48912',
         BASE_URL: 'http://api.openweathermap.org/data/2.5/onecall',
+        IMAGE_BASE_URL: 'http://openweathermap.org/img/wn/',
     },
     timing: {
         ONE_SECOND_IN_MS: 1000,
@@ -24,9 +25,16 @@ const appConfig = {
     temperature: {
         DEFAULT_UNITS: 'metric',
         CELCIUS_SYMBOL: '℃',
+        DEFAULT_TEMPERATURE: 0,
+    },
+    progress: {
+        PROGRESS_MESSAGE: 'Reloading in',
+        PROGRESS_UNIT: 's',
     },
     misc: {
         ROOT_ID: 'root',
+        DEFAULT_DAILY_FORECAST: [],
+        ICON_EXT: '.png',
     },
 };
 

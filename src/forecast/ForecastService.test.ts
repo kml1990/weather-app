@@ -39,17 +39,7 @@ describe('ForecastService', () => {
         }))();
         forecastService = new ForecastService(forecastFactoryMock, locationServiceMock, forecastApiMock);
     });
-    describe('forecast', () => {
-        it('should create default forecast when new service is instantiated', () => {
-            // when
-            const { forecast } = forecastService;
-
-            // then
-            expect(forecast).toBeInstanceOf(Forecast);
-        });
-    });
-
-    describe('getForecast', () => {
+    describe('fetchForecast', () => {
         it('should get new forecast from api', async () => {
             // given
             const location = new Location(appConfig.location.LONDON_CORDS);
@@ -96,10 +86,9 @@ describe('ForecastService', () => {
             // given
             (forecastApiMock.fetchForecast as jest.Mock).mockRejectedValue('');
             const forecastResultsSecond = await forecastService.getForecast();
-            const { forecast } = forecastService;
 
             // then
-            expect(forecastResultsSecond).toEqual(forecast);
+            expect(forecastResultsSecond).not.toBeUndefined();
         });
     });
 });

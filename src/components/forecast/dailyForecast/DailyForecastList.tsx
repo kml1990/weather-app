@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import FutureForecastDay from './FutureForecastDay';
+import DailyForecastItem from './DailyForecastItem';
 import DailyForecast from '../../../dailyForecast/DailyForecast';
 
-import './FutureForecast.scss';
+import './DailyForecastList.scss';
 
-export interface FutureForecastProps {
+export interface DailyForecastListProps {
     dailyForecasts: DailyForecast[];
 }
 
-const FutureForecast: React.FC<FutureForecastProps> = ({ dailyForecasts }) => {
+const DailyForecastList: React.FC<DailyForecastListProps> = ({ dailyForecasts }) => {
     const [show, setShow] = useState<boolean>(false);
 
     useEffect(() => {
@@ -21,12 +21,12 @@ const FutureForecast: React.FC<FutureForecastProps> = ({ dailyForecasts }) => {
     }, [dailyForecasts]);
 
     const futureForecastDays = dailyForecasts.map((dailyForecast, index) => (
-        <CSSTransition key={`${dailyForecast.day}-${index}`} in={show} timeout={500} classNames="FutureForecast__item">
-            <FutureForecastDay forecast={dailyForecast} />
+        <CSSTransition key={`${dailyForecast.day}-${index}`} in={show} timeout={500} classNames="DailyForecasts__item">
+            <DailyForecastItem dailyForecast={dailyForecast} />
         </CSSTransition>
     ));
 
-    return  <ul className="FutureForecast">{futureForecastDays}</ul>;
+    return <ul className="DailyForecastList">{futureForecastDays}</ul>;
 };
 
-export default FutureForecast;
+export default DailyForecastList;

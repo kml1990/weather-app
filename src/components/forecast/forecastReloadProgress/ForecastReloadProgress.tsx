@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import appConfig from '../../../utils/settings/Config';
 import ProgressBar from '../../common/progressBar/ProgressBar';
 
 import './ForecastReloadProgress.scss';
@@ -8,24 +9,22 @@ export interface ForecastReloadProgressProps {
     reloadFrequencyInSeconds: number;
 }
 
-const ONE_SECOND_IN_MS = 1000;
-
 const ForecastReloadProgress: React.FC<ForecastReloadProgressProps> = ({ trigger, reloadFrequencyInSeconds }) => {
-    const [timer, setTimeer] = useState<number>(reloadFrequencyInSeconds);
+    const [timer, setTimer] = useState<number>(reloadFrequencyInSeconds);
 
     const resetTimer = () => {
-        setTimeer(reloadFrequencyInSeconds);
+        setTimer(reloadFrequencyInSeconds);
     };
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTimeer(prevTime => {
+            setTimer(prevTime => {
                 if (prevTime > 0) {
                     return prevTime - 1;
                 }
                 return 0;
             });
-        }, ONE_SECOND_IN_MS);
+        }, appConfig.timing.ONE_SECOND_IN_MS);
         return () => clearInterval(interval);
     }, []);
 
@@ -34,7 +33,7 @@ const ForecastReloadProgress: React.FC<ForecastReloadProgressProps> = ({ trigger
     }, [trigger]);
 
     const progress = (timer / reloadFrequencyInSeconds) * 100;
-    const text = `Reloading in ${timer}s`; // TODO
+    const text = `${appConfig.progress.PROGRESS_MESSAGE} ${timer}${appConfig.progress.PROGRESS_UNIT}`;
 
     return (
         <section className="ForecastReloadProgress">

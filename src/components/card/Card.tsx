@@ -2,12 +2,8 @@ import React from 'react';
 
 import './Card.scss';
 
-export interface CardProps {
-    // className?: string;
-}
-
-const Card: React.FC<CardProps> = ({ children }) => {
+const Card: React.FC = React.memo(({ children }) => {
     return <div className="Card">{children}</div>;
-};
+});
 
 export default Card;
