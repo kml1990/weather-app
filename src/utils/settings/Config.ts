@@ -1,7 +1,7 @@
 const appConfig = {
     api: {
         API_KEY_PARAM: 'appid',
-        API_KEY_VALUE: '4b759b7f086ae2b5e17ed220a9b48912',
+        API_KEY_VALUE: process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY,
         BASE_URL: 'http://api.openweathermap.org/data/2.5/onecall',
         IMAGE_BASE_URL: 'http://openweathermap.org/img/wn/',
     },
@@ -9,6 +9,7 @@ const appConfig = {
         ONE_SECOND_IN_MS: 1000,
         WEATHER_RELOAD_FREQUENCY_IN_MS: 60000,
         TEMPERATURE_COUNT_UP_SPEED_IN_MS: 60,
+        CSS_TRANSITION_DELAY: 500,
     },
     texts: {
         UNABLE_TO_LOAD_APP: 'Something went wrong. Error: ',
