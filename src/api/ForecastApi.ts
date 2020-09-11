@@ -2,15 +2,14 @@ import axios from 'axios';
 import { injectable } from 'inversify';
 import { ForecastDto } from '../forecast/ForecastDto';
 import Location from '../location/Location';
-
-const BASE_URL = 'http://api.openweathermap.org/data/2.5/onecall';
+import appConfig from '../utils/settings/Config';
 
 @injectable()
 export default class ForecastApi {
-    fetchForecast(location: Location, units = 'metric'): Promise<ForecastDto | null> {
+    fetchForecast(location: Location, units = appConfig.temperature.DEFAULT_UNITS): Promise<ForecastDto | undefined> {
         const { lat, lon } = location;
         return axios
-            .get<ForecastDto>(BASE_URL, {
+            .get<ForecastDto>(appConfig.api.BASE_URL, {
                 params: {
                     lat,
                     lon,
@@ -21,7 +20,7 @@ export default class ForecastApi {
                 return response.data;
             })
             .catch(() => {
-                return null;
+                return undefined;
             });
     }
 }

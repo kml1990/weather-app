@@ -1,24 +1,19 @@
 import { injectable } from 'inversify';
+import appConfig from '../utils/settings/Config';
 import Location from './Location';
-
-export const DEFAULT_LOCATION = {
-    lat: 51.51,
-    lon: -0.13,
-};
-
 @injectable()
 export default class LocationService {
     private _currentLocation: Location;
 
     constructor() {
-        this._currentLocation = new Location(DEFAULT_LOCATION);
+        this._currentLocation = new Location(appConfig.location.LONDON_CORDS);
     }
 
-    get currentLocation(): Location {
+    getCurrentLocation(): Location {
         return this._currentLocation;
     }
 
-    set currentLocation(location: Location) {
+    setCurrentLocation(location: Location) {
         this._currentLocation = location;
     }
 }

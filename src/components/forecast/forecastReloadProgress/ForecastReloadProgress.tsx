@@ -6,7 +6,6 @@ import './ForecastReloadProgress.scss';
 export interface ForecastReloadProgressProps {
     trigger: any;
     reloadFrequencyInSeconds: number;
-    // className?: string;
 }
 
 const ONE_SECOND_IN_MS = 1000;
@@ -20,9 +19,12 @@ const ForecastReloadProgress: React.FC<ForecastReloadProgressProps> = ({ trigger
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (timer >= 0) {
-                setTimeer(prevTime => prevTime - 1);
-            }
+            setTimeer(prevTime => {
+                if (prevTime > 0) {
+                    return prevTime - 1;
+                }
+                return 0;
+            });
         }, ONE_SECOND_IN_MS);
         return () => clearInterval(interval);
     }, []);
@@ -32,13 +34,11 @@ const ForecastReloadProgress: React.FC<ForecastReloadProgressProps> = ({ trigger
     }, [trigger]);
 
     const progress = (timer / reloadFrequencyInSeconds) * 100;
-    console.log(progress)
+    const text = `Reloading in ${timer}s`; // TODO
 
     return (
         <section className="ForecastReloadProgress">
-            <span className="ForecastReloadProgress__text">
-                Reloading in {timer}s
-            </span>
+            <span className="ForecastReloadProgress__text">{text}</span>
             <ProgressBar progress={progress} className="ForecastReloadProgress__bar" />
         </section>
     );

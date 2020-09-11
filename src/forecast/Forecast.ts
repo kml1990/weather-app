@@ -1,11 +1,18 @@
 import DailyForecast from '../dailyForecast/DailyForecast';
 import Location from '../location/Location';
+import appConfig from '../utils/settings/Config';
 
 export interface ForecastParams {
     currentTemperature: number;
     dailyForecasts: DailyForecast[];
     location: Location;
 }
+
+export const DEFAULT_FORECAST_CONFIG = {
+    currentTemperature: 0,
+    dailyForecasts: [],
+    location: new Location(appConfig.location.LONDON_CORDS),
+};
 
 export default class Forecast {
     private readonly _currentTemperature: number;

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["reflect-metadata"],
+    "types": ["reflect-metadata", "jest"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,5 +18,12 @@
     "emitDecoratorMetadata": true,
     "jsx": "preserve"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.js",
+    "**/*.test.js"
+  ]
 }

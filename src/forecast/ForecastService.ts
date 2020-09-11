@@ -1,8 +1,10 @@
 import { inject, injectable } from 'inversify';
 import ForecastApi from '../api/ForecastApi';
 import DependencyType from '../di/DependencyType';
+import Location from '../location/Location';
 import LocationService from '../location/LocationService';
-import Forecast from './Forecast';
+import appConfig from '../utils/settings/Config';
+import Forecast, { DEFAULT_FORECAST_CONFIG } from './Forecast';
 import { ForecastDto } from './ForecastDto';
 import ForecastFactory from './ForecastFactory';
 
@@ -14,7 +16,7 @@ export default class ForecastService {
 
     private readonly forecastApi: ForecastApi;
 
-    private _forecast: Forecast | null;
+    private _forecast: Forecast;
 
     constructor(
         @inject(DependencyType.ForecastFactory) forecastFactory: ForecastFactory,
@@ -24,29 +26,32 @@ export default class ForecastService {
         this.forecastFactory = forecastFactory;
         this.locationService = locationService;
         this.forecastApi = forecastApi;
-        this._forecast = null;
+        this._forecast = new Forecast(DEFAULT_FORECAST_CONFIG);
     }
 
     get forecast() {
         return this._forecast;
     }
 
-    getForecast(): Promise<Forecast | null> {
-        const { currentLocation } = this.locationService;
+    getForecast(): Promise<Forecast> {
+        const currentLocation = this.locationService.getCurrentLocation();
         return this.forecastApi
             .fetchForecast(currentLocation)
-            .then((forecastDto: ForecastDto | null) => {
-                console.log(forecastDto)
-                if (forecastDto) {
-                    const forecast = this.forecastFactory.create(forecastDto);
-                    this._forecast = forecast;
-                    this.locationService.currentLocation = forecast.location;
-                    return forecast;
+            .then((forecastDto: ForecastDto | undefined) => {
+                if (!forecastDto) {
+                    return this._forecast;
                 }
-                return null;
+                const forecast = this.forecastFactory.create(forecastDto);
+                this.setForecastLocation(forecast.location);
+                this._forecast = forecast;
+                return forecast;
             })
             .catch(() => {
-                return null;
+                return this._forecast;
             });
+    }
+
+    private setForecastLocation(location: Location) {
+        this.locationService.setCurrentLocation(location);
     }
 }

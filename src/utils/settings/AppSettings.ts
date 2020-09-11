@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-
-const OPEN_WEATHER_MAP_API_KEY_PARAM = 'appid';
+import appConfig from './Config';
 
 export default class AppSettings {
     configureApp() {
@@ -11,8 +10,7 @@ export default class AppSettings {
         axios.defaults.params = {};
         axios.interceptors.request.use(
             (config: AxiosRequestConfig) => {
-                // TODO add apis key to process.env
-                config.params[OPEN_WEATHER_MAP_API_KEY_PARAM] = '4b759b7f086ae2b5e17ed220a9b48912';
+                config.params[appConfig.api.API_KEY_PARAM] = appConfig.api.API_KEY_VALUE;
                 return config;
             },
             (error: Error) => {

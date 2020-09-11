@@ -2,14 +2,13 @@ import { Container } from 'inversify';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'reflect-metadata';
-import App from './App';
 import { DependencyProvider } from './di/DependencyContext';
 import DependencyService from './di/DependencyService';
+import appConfig from './utils/settings/Config';
+import AppSettings from './utils/settings/AppSettings';
+import App from './components/app/App';
 
 import './index.scss';
-import AppSettings from './settings/AppSettings';
-
-const ROOT_ID = 'root';
 
 const dependencyService = new DependencyService();
 
@@ -20,14 +19,12 @@ dependencyService
         appSettings.configureApp();
 
         ReactDOM.render(
-            <React.StrictMode>
-                <DependencyProvider container={dependenciesContainer}>
-                    <App />
-                </DependencyProvider>
-            </React.StrictMode>,
-            document.getElementById(ROOT_ID),
+            <DependencyProvider container={dependenciesContainer}>
+                <App />
+            </DependencyProvider>,
+            document.getElementById(appConfig.misc.ROOT_ID),
         );
     })
-    .catch(() => {
-        console.error('Something went wrong');
+    .catch((error: Error) => {
+        console.error(appConfig.texts.UNABLE_TO_LOAD_APP, error.message);
     });

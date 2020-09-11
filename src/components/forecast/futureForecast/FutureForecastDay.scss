@@ -1,6 +1,8 @@
 @import '../../../constants.scss';
 
 $borderRadius: $borderRadius / 3;
+$animationScale: scale(0.5);
+$animationTransition: opacity 0.5s, transform 0.5s;
 
 .FutureForecastDay {
     position: relative;
@@ -27,3 +29,21 @@ $borderRadius: $borderRadius / 3;
     left: 25%;
     font-size: $largeFontSize;
 }
+
+.FutureForecast__item-enter {
+    opacity: 0;
+    transform: $animationScale;
+  }
+.FutureForecast__item-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: $animationTransition;
+}
+.FutureForecast__item-exit {
+    opacity: 1;
+}
+.FutureForecast__item-exit-active {
+    opacity: 0;
+    transform: $animationScale;
+    transition: $animationTransition;
+  }
